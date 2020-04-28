@@ -1,10 +1,19 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <nav class="level top-navbar">
+      <div class="level-item has-text-centered together-alone">
+        <div class="logo">
+          <img src="./assets/together.svg" class="together" />
+          <img src="./assets/alone.svg" class="alone" />
+        </div>
+      </div>
+    </nav>
     <router-view/>
+    <nav class="level foot-navbar">
+      <div class="level-item has-text-centered">
+        <p>Lavate las manos &copy;</p>
+      </div>
+    </nav>
   </div>
 </template>
 

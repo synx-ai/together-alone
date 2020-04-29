@@ -13,20 +13,22 @@
         <br />
         <div class="columns">
           <div class="column">
-            <img src="../assets/deliverisi.png" />
-            <h5>Deliverisi</h5>
-            <p>Lorem ipsum</P>
+            <img :src="picture1" />
           </div>
           <div class="column">
-            <img src="../assets/the_juices.png" />
-            <h5>The Juices Flowing</h5>
-            <p>Lorem ipsum</P>
+            <img :src="picture2" />
           </div>
           <div class="column">
-            <img src="../assets/the_juices.png" />
+            <img :src="picture3" />
           </div>
           <div class="column">
-            <img src="../assets/the_juices.png" />
+            <img :src="picture4" />
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <h5>{{ presenter }}</h5>
+            <p>{{ bio }}</P>
           </div>
         </div>
       </div>
@@ -43,7 +45,13 @@ export default {
     description: String,
     date: String,
     zoomURL: String,
-    videoURL: String
+    videoURL: String,
+    presenter: String,
+    bio: String,
+    picture1: String,
+    picture2: String,
+    picture3: String,
+    picture4: String
   }
 }
 </script>

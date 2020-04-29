@@ -11,6 +11,12 @@
                     :date="e[3]"
                     :zoomURL="e[4]"
                     :videoURL="e[5]"
+                    :presenter="e[6]"
+                    :bio="e[7]"
+                    :picture1="e[8]"
+                    :picture2="e[9]"
+                    :picture3="e[10]"
+                    :picture4="e[11]"
                     @linkRequested="onLinkRequest" />
             </div>
           </div>
@@ -68,7 +74,7 @@ export default {
 
     axios.get(url)
     .then(resp => {
-      this.events = resp.data.values;
+      this.events = resp.data.values.reverse();
     })
   },
   methods: {

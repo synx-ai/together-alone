@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="level top-navbar">
+    <nav class="level top-navbar navbar is-fixed-top">
       <div class="level-item has-text-centered together-alone">
         <div class="logo">
           <img src="./assets/together.svg" class="together" />

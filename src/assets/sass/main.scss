@@ -5,7 +5,9 @@ html, body {
 @import '~bulma';
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&family=Space+Mono&display=swap');
 
-
+html.has-navbar-fixed-top, body.has-navbar-fixed-top {
+  padding-top: 8.25rem;
+}
 
 #app {
   font-family: 'Space Mono', monospace !important;
@@ -18,7 +20,8 @@ html, body {
   background: url('~@/assets/vector_2.svg');
   background-size: 100% auto;
   background-repeat: no-repeat;
-  background-position: right 155px;
+  background-position: right 125px;
+  background-attachment: fixed;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -34,6 +37,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .logo {
   position: absolute;
+
+  @include mobile {
+    top: 2.7rem;
+  }
+
 }
 
 .together-alone {

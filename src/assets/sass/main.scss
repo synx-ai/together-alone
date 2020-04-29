@@ -160,13 +160,30 @@ line-height: 18px;
   border-top: 1px solid black;
 }
 
+.card-footer-item[disabled],
+.card-footer-item[disabled]:hover {
+  background: #FFF;
+  color: rgba(0, 0, 0, 0.4);
+  cursor:not-allowed;
+}
+
 .card-footer-item:hover {
   background: #A9F300;
   color: #000;
 }
 
-.card-footer-item:disabled {
-  color: rgba(0, 0, 0, 0.4);
+.input[disabled],
+.input[disabled]:hover {
+  background: #EBEBEB;
+  color: black;
+  font-size: 16px;
+  height: 60px;
+  border: 1px solid black;
+  border-radius: 0;
+  font-family: 'Space Mono', monospace !important;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 
 .input {

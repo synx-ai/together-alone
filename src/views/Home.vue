@@ -2,14 +2,17 @@
   <div class="wrapper">
     <div class="section cards">
       <div class="container">
-        <div class="columns is-mobile is-centered">
-          <div class="column is-8">
-            <Card msg="Welcome to Your Vue.js App" @link="showModal = true" />
-          </div>
-        </div>
-        <div class="columns is-mobile is-centered">
-          <div class="column is-8">
-            <Card msg="Welcome to Your Vue.js App" @link="showModal = true" />
+        <div v-for="e in events" :key="e[0]">
+          <div class="columns is-mobile is-centered">
+            <div class="column is-8">
+              <Card :eventId="e[0]"
+                    :title="e[1]"
+                    :description="e[2]"
+                    :date="e[3]"
+                    :zoomURL="e[4]"
+                    :videoURL="e[5]"
+                    @linkRequested="onLinkRequest" />
+            </div>
           </div>
         </div>
       </div>
@@ -21,7 +24,10 @@
           <div class="container">
             <div class="columns is-mobile is-centered">
               <div class="column is-10">
-                <Modal msg="Welcome to Your Vue.js App" @close="showModal = false"/>
+                <Modal :eventId="currentEventId"
+                       :zoomURL="currentZoomURL"
+                       :videoURL="currentVideoURL"
+                       @close="showModal = false"/>
               </div>
             </div>
           </div>
@@ -36,6 +42,8 @@
 import Card from '@/components/Card.vue'
 import Modal from '@/components/Modal.vue'
 
+const axios = require('axios');
+
 export default {
   name: 'Home',
   components: {
@@ -44,7 +52,33 @@ export default {
   },
   data() {
     return {
-      showModal: false
+      showModal: false,
+      currentEventId: 'none',
+      currentZoomURL: '',
+      currentVideoURL: '',
+      events: []
+    }
+  },
+  mounted() {
+    let docId = '1ALGuKZdAmQFYDsJhWxHdscsfj0YugOxuYJwrkNrTK-E';
+    let apiKey = 'AIzaSyDqglUyr1ZuOxnIj6jv7274JLbH7zCf2v4';
+    let values = 'A2:AZ100';
+
+    let url = 'https://content-sheets.googleapis.com/v4/spreadsheets/' + docId + '/values/'+ values +'?access_token='+ apiKey +'&key='+ apiKey
+
+    axios.get(url)
+    .then(resp => {
+      this.events = resp.data.values;
+    })
+  },
+  methods: {
+    onLinkRequest (eventId, zoomURL, videoURL) {
+      this.showModal = true;
+      this.currentEventId = eventId;
+      this.currentZoomURL = zoomURL;
+      this.currentVideoURL = videoURL;
+
+      console.log(eventId, zoomURL, videoURL);
     }
   }
 }

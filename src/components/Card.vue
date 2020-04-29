@@ -2,14 +2,14 @@
   <div class="card">
     <header class="card-header">
       <p class="card-header-title">
-        08.Abr.20.8pm
+        {{ date }}
       </p>
-      <a href="#" class="card-header-item" @click="$emit('link')">GET ZOOM LINK <span class="link-icon"> </span></a>
+      <a href="#" class="card-header-item" @click="$emit('linkRequested', eventId, zoomURL, videoURL)">GET ZOOM LINK <span class="link-icon"> </span></a>
     </header>
     <div class="card-content">
       <div class="content has-text-left">
-        <h2>Comida y bebida</h2>
-        <p class="card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum turpis tortor, pretium dignissim ligula vulputate non. Donec vulputate velit turpis, sit amet fermentum metus mollis eget. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi et arcu mi. Nunc erat nulla, sodales eget odio id, sollicitudin convallis lorem. Sed consectetur feugiat leo eget laoreet. Aenean sed libero aliquet, vehicula purus eu, elementum nibh.</p>
+        <h2>{{ title }}</h2>
+        <p class="card-description">{{ description }}</p>
         <br />
         <div class="columns">
           <div class="column">
@@ -36,9 +36,14 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Card',
   props: {
-    msg: String
+    eventId: String,
+    title: String,
+    description: String,
+    date: String,
+    zoomURL: String,
+    videoURL: String
   }
 }
 </script>

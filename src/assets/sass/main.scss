@@ -149,6 +149,11 @@ line-height: 18px;
   margin-bottom: 7px;
 }
 
+.content figure {
+    margin: 0;
+    text-align: center;
+}
+
 .link-icon {
   background: url('~@/assets/icn_link.svg') left top;
   width: 16px;

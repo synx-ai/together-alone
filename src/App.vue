@@ -11,7 +11,7 @@
     <router-view/>
     <nav class="level foot-navbar">
       <div class="level-item has-text-centered">
-        <p>Lavate las manos ☺︎</p>
+        <p>Lávate las manos ☺︎</p>
       </div>
     </nav>
   </div>

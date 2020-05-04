@@ -11,18 +11,54 @@
         <h2>{{ title }}</h2>
         <p class="card-description">{{ description }}</p>
         <br />
-        <div class="columns">
-          <div class="column">
-            <img :src="picture1" />
+        <div class="is-hidden-tablet is-marging-less">
+          <div class="columns is-mobile">
+            <div class="column">
+              <figure class="image is-square">
+                <img :src="picture1">
+              </figure>
+            </div>
+            <div class="column">
+              <figure class="image is-square">
+                <img :src="picture2">
+              </figure>
+            </div>
           </div>
-          <div class="column">
-            <img :src="picture2" />
+          <div class="columns is-mobile">
+            <div class="column">
+              <figure class="image is-square">
+                <img :src="picture3">
+              </figure>
+            </div>
+            <div class="column">
+              <figure class="image is-square">
+                <img :src="picture4">
+              </figure>
+            </div>
           </div>
-          <div class="column">
-            <img :src="picture3" />
-          </div>
-          <div class="column">
-            <img :src="picture4" />
+        </div>
+        <div class="is-hidden-mobile">
+          <div class="columns">
+            <div class="column">
+              <figure class="image is-square">
+                <img :src="picture1">
+              </figure>
+            </div>
+            <div class="column">
+              <figure class="image is-square">
+                <img :src="picture2">
+              </figure>
+            </div>
+            <div class="column">
+              <figure class="image is-square">
+                <img :src="picture3">
+              </figure>
+            </div>
+            <div class="column">
+              <figure class="image is-square">
+                <img :src="picture4">
+              </figure>
+            </div>
           </div>
         </div>
         <div class="columns">

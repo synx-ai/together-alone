@@ -33,6 +33,7 @@
                 <Modal :eventId="currentEventId"
                        :zoomURL="currentZoomURL"
                        :videoURL="currentVideoURL"
+                       :registered="currentRegistered"
                        @close="showModal = false"/>
               </div>
             </div>
@@ -62,6 +63,7 @@ export default {
       currentEventId: 'none',
       currentZoomURL: '',
       currentVideoURL: '',
+      currentRegistered: false,
       events: []
     }
   },
@@ -71,6 +73,8 @@ export default {
     let values = 'A2:AZ100';
 
     let url = 'https://content-sheets.googleapis.com/v4/spreadsheets/' + docId + '/values/'+ values +'?access_token='+ apiKey +'&key='+ apiKey
+
+    console.log(this.$localStorage.get('localRegistry'));
 
     axios.get(url)
     .then(resp => {
@@ -84,7 +88,13 @@ export default {
       this.currentZoomURL = zoomURL;
       this.currentVideoURL = videoURL;
 
-      console.log(eventId, zoomURL, videoURL);
+      var registry = this.$localStorage.get('localRegistry');
+
+      console.log(eventId, eventId in registry, registry);
+
+      this.currentRegistered = (eventId in registry) ? true : false;
+
+      console.log(eventId, 'zoom: ', zoomURL, 'video: ', videoURL);
     }
   }
 }

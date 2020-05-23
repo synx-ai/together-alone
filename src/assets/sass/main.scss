@@ -58,6 +58,11 @@ h1, h2, h3, h4, h5, h6 {
   bottom: -21.9%;
 }
 
+.columns.is-mobile > .column.is-8 {
+    flex: none;
+    width: 86%;
+}
+
 .cards {
   padding: 0;
 }
@@ -185,8 +190,10 @@ line-height: 18px;
   color: #000;
 }
 
-.input[disabled],
-.input[disabled]:hover {
+.input[readonly],
+.input[readonly]:active,
+.input[readonly]:focus,
+.input[readonly]:hover {
   background: #EBEBEB;
   color: black;
   font-size: 16px;

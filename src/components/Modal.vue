@@ -12,7 +12,7 @@
         <br />
         <form id="email-post">
           <input v-if="!registered" class="input" id="email" v-model="email" type="email" name="email" placeholder="Escribe tu correo aquí...">
-          <input v-else class="input" id="email" v-model="linkURL" type="email" name="email" disabled>
+          <input v-else class="input" id="email" v-model="linkURL" type="email" name="email" readonly>
         </form>
       </div>
     </div>
@@ -29,13 +29,19 @@ export default {
   props: {
     eventId: String,
     zoomURL: String,
-    videoURL: String
+    videoURL: String,
+    registered: Boolean
+  },
+  localStorage: {
+    localRegistry: {
+      type: Object,
+      default: {}
+    },
   },
   data() {
     return {
       validEmail: false,
       email: null,
-      registered: false,
       linkURL: ''
     }
   },
@@ -68,15 +74,30 @@ export default {
       }
     },
     onCloseClick: function () {
-      this.registered = false;
+      if (this.registered) {
+        var registry = this.$localStorage.get('localRegistry');
+
+        registry[this.eventId] = true;
+
+        this.$localStorage.set('localRegistry', registry);
+      }
+
+      //this.registered = false;
       this.validEmail = false;
       this.email = '';
-      
+
       this.$emit('close');
     },
     isValidEmail: function (email) {
       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
+    },
+    createLink: (zoomURL, videoURL) => {
+      if (videoURL) {
+        return videoURL;
+      }
+
+      return zoomURL;
     }
   },
   watch: {
@@ -90,6 +111,14 @@ export default {
       } else {
         this.validEmail = false;
       }
+    },
+    zoomURL () {
+      console.log('zoom', 'z: ', this.zoomURL, 'v: ', this.videoURL);
+      this.linkURL = this.createLink(this.zoomURL, this.videoURL)
+    },
+    videoURL () {
+      console.log('video', 'z: ', this.zoomURL, 'v: ', this.videoURL);
+      this.linkURL = this.createLink(this.zoomURL, this.videoURL)
     }
   }
 }

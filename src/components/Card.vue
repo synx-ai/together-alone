@@ -4,7 +4,7 @@
       <p class="card-header-title">
         {{ date }}
       </p>
-      <a href="#" class="card-header-item" @click="$emit('linkRequested', eventId, zoomURL, videoURL)">GET ZOOM LINK <span class="link-icon"> </span></a>
+      <a href="#" class="card-header-item" @click="$emit('linkRequested', eventId, zoomURL, videoURL)">VER VIDEO <span class="link-icon"> </span></a>
     </header>
     <div class="card-content">
       <div class="content has-text-left">

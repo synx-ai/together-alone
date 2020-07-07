@@ -4,7 +4,7 @@
       <p class="card-header-title">
         {{ date }}
       </p>
-      <a href="#" class="card-header-item" @click="$emit('linkRequested', eventId, zoomURL, videoURL)">VER VIDEO <span class="link-icon"> </span></a>
+      <a href="#" class="card-header-item" @click="$emit('linkRequested', eventId, zoomURL, videoURL)">{{videoMessage}} <span class="link-icon"> </span></a>
     </header>
     <div class="card-content">
       <div class="content has-text-left">
@@ -88,6 +88,14 @@ export default {
     picture2: String,
     picture3: String,
     picture4: String
+  },
+  computed: {
+    videoMessage: function () {
+      var previousDate = Date.parse('2020.' + this.date.replace("pm", " pm"));
+      var today = new Date;
+
+      return previousDate < (Date.parse(today)) ? 'GET VIDEO': 'GET ZOOM LINK';
+    }
   }
 }
 </script>
